@@ -134,52 +134,183 @@
     font-variant-numeric: tabular-nums;
   }
 
-  nav.pills {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding: 0 0 0.9rem;
-    scrollbar-width: none;
+  .search-row {
+    padding: 0 0 1rem;
   }
-  nav.pills::-webkit-scrollbar { display: none; }
 
-  nav.pills a {
-    flex: none;
-    text-decoration: none;
-    font-size: 0.82rem;
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    max-width: 440px;
+    background: var(--paper-raised);
     border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.55rem 1rem;
+  }
+  .search-bar svg { flex: none; width: 17px; height: 17px; color: var(--ink-soft); }
+  .search-bar input {
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.88rem;
+    width: 100%;
+  }
+  .search-bar input::placeholder { color: var(--ink-soft); }
+
+  /* ---------- Layout: sidebar + content ---------- */
+
+  .layout {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    align-items: start;
+    gap: 2rem;
+    padding-top: 1.6rem;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 6.7rem;
+  }
+
+  .sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 10px;
     color: var(--ink-soft);
+    border: 1px solid transparent;
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
-  nav.pills a.active {
+  .sidebar nav a svg { flex: none; width: 17px; height: 17px; color: var(--wine); }
+  .sidebar nav a.active {
     background: var(--wine);
-    border-color: var(--wine);
     color: var(--paper-raised);
   }
-  nav.pills a:hover:not(.active) {
-    border-color: var(--teal);
-    color: var(--teal);
+  .sidebar nav a.active svg { color: var(--paper-raised); }
+  .sidebar nav a:hover:not(.active) {
+    background: var(--paper-raised-2);
+    border-color: var(--line);
+  }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; gap: 0.8rem; }
+    .sidebar { position: static; }
+    .sidebar nav {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 0.5rem;
+      scrollbar-width: none;
+      padding-bottom: 0.2rem;
+    }
+    .sidebar nav::-webkit-scrollbar { display: none; }
+    .sidebar nav a { flex: none; white-space: nowrap; }
+  }
+
+  /* ---------- Carousel: featured niches ---------- */
+
+  .carousel {
+    position: relative;
+    height: clamp(180px, 24vw, 220px);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 1.6rem 2.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+  }
+  .slide.is-active { opacity: 1; visibility: visible; }
+
+  .slide-wine { background: var(--wine); color: #fdfaf3; }
+  .slide-teal { background: var(--teal); color: #fdfaf3; }
+  .slide-gold { background: var(--gold); color: var(--gold-ink); }
+  .slide-orange { background: var(--orange); color: var(--orange-ink); }
+
+  .slide-eyebrow {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+
+  .slide h2 {
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    margin: 0 0 0.35rem;
+  }
+
+  .slide p {
+    margin: 0 0 0.85rem;
+    max-width: 36ch;
+    font-size: 0.86rem;
+    opacity: 0.92;
+  }
+
+  .slide-cta {
+    align-self: flex-start;
+    background: var(--paper-raised);
+    color: var(--ink);
+    border: none;
+    border-radius: 999px;
+    padding: 0.5rem 1.15rem;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.4rem;
+    z-index: 2;
+  }
+  .carousel-dots button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border-radius: 999px;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+  }
+  .carousel-dots button.is-active {
+    width: 20px;
+    background: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide { transition: none; }
   }
 
   /* ---------- Hero ---------- */
 
   .hero {
-    padding: 2.6rem 0 2.1rem;
-    display: grid;
-    gap: 0.9rem;
+    padding: 1.6rem 0 1.4rem;
     max-width: 620px;
-  }
-
-  .hero h1 {
-    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
-  }
-
-  .hero p {
-    color: var(--ink-soft);
-    font-size: 0.98rem;
-    max-width: 46ch;
   }
 
   .editor-note {
@@ -199,8 +330,15 @@
     padding: 1.6rem 0 0.6rem;
     animation: fade-in 0.2s ease;
   }
-  section.category.is-active {
+  section.category.is-active,
+  section.category.force-show {
     display: block;
+  }
+  section.category.is-hidden {
+    display: none;
+  }
+  .card.is-hidden {
+    display: none;
   }
   @keyframes fade-in {
     from { opacity: 0; }
@@ -453,6 +591,10 @@
       <path d="M12 21s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12Z"/>
       <circle cx="12" cy="9" r="2.4"/>
     </symbol>
+    <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10.5" cy="10.5" r="6.5"/>
+      <line x1="20" y1="20" x2="15.4" y2="15.4"/>
+    </symbol>
     <symbol id="ic-whatsapp" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 1.8a8.2 8.2 0 0 1 6.9 12.6l-.3.4.9 3.3-3.4-.9-.4.2A8.2 8.2 0 1 1 12 3.8Z"/>
       <path d="M9 7.6c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-2-1c-.3-.1-.5-.2-.7.2l-.5.8c-.1.2-.3.2-.5.1-.7-.3-1.7-.8-2.5-1.6-.7-.7-1.2-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5c.2-.2.2-.4.1-.6L9 7.6Z"/>
@@ -479,28 +621,73 @@
       </div>
       <span class="item-count">21 produtos · 6 categorias</span>
     </div>
-    <nav class="pills" id="catNav">
-      <a href="#tercos" class="active">Terços e Rosários</a>
-      <a href="#dezenas">Dezenas</a>
-      <a href="#medalhas">Medalhas</a>
-      <a href="#imagens">Imagens Sacras</a>
-      <a href="#santos">Santos e Estampas</a>
-      <a href="#livros">Livros</a>
-    </nav>
+    <div class="search-row">
+      <label class="search-bar">
+        <svg viewBox="0 0 24 24"><use href="#ic-search"/></svg>
+        <input type="search" id="searchInput" placeholder="Buscar produtos (ex: terço, medalha, bíblia)..." aria-label="Buscar produtos">
+      </label>
+    </div>
   </div>
 </header>
 
 <main class="container">
+  <div class="layout">
+    <aside class="sidebar">
+      <nav id="catNav">
+        <a href="#tercos" class="active"><svg><use href="#ic-rosary"/></svg>Terços e Rosários</a>
+        <a href="#dezenas"><svg><use href="#ic-decade"/></svg>Dezenas</a>
+        <a href="#medalhas"><svg><use href="#ic-medal"/></svg>Medalhas</a>
+        <a href="#imagens"><svg><use href="#ic-image"/></svg>Imagens Sacras</a>
+        <a href="#santos"><svg><use href="#ic-card"/></svg>Santos e Estampas</a>
+        <a href="#livros"><svg><use href="#ic-book"/></svg>Livros</a>
+      </nav>
+    </aside>
 
-  <div class="hero">
-    <h1>Catálogo de produtos</h1>
-    <p>Modelo de catálogo para sua loja católica, organizado por categoria e pronto para receber seus produtos, fotos e preços reais.</p>
-    <div class="editor-note">
-      <strong>Como usar:</strong> este catálogo vem com produtos de exemplo. Me diga os itens reais da sua loja (nome, preço, material, foto) e eu atualizo cada seção — ou edite diretamente o texto abaixo.
-    </div>
-  </div>
+    <div class="content">
 
-  <section class="category is-active" id="tercos">
+      <div class="carousel" id="carousel">
+        <div class="slide slide-wine is-active" data-cat="tercos">
+          <div>
+            <span class="slide-eyebrow">Nicho em destaque</span>
+            <h2>Terços e Rosários</h2>
+            <p>Peça central da oração diária, em madeira, vidro e cristal.</p>
+            <button type="button" class="slide-cta" data-goto="tercos">Ver terços</button>
+          </div>
+        </div>
+        <div class="slide slide-teal" data-cat="imagens">
+          <div>
+            <span class="slide-eyebrow">Nicho em destaque</span>
+            <h2>Imagens Sacras</h2>
+            <p>Nossa Senhora Aparecida e os santos de devoção para sua casa.</p>
+            <button type="button" class="slide-cta" data-goto="imagens">Ver imagens</button>
+          </div>
+        </div>
+        <div class="slide slide-gold" data-cat="medalhas">
+          <div>
+            <span class="slide-eyebrow">Nicho em destaque</span>
+            <h2>Medalhas</h2>
+            <p>Proteção e fé para carregar todos os dias.</p>
+            <button type="button" class="slide-cta" data-goto="medalhas">Ver medalhas</button>
+          </div>
+        </div>
+        <div class="slide slide-orange" data-cat="livros">
+          <div>
+            <span class="slide-eyebrow">Nicho em destaque</span>
+            <h2>Livros</h2>
+            <p>Bíblias, catecismo e literatura católica para a família toda.</p>
+            <button type="button" class="slide-cta" data-goto="livros">Ver livros</button>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+
+      <div class="hero">
+        <div class="editor-note">
+          <strong>Como usar:</strong> este catálogo vem com produtos de exemplo. Me diga os itens reais da sua loja (nome, preço, material, foto) e eu atualizo cada seção — ou edite diretamente o texto abaixo.
+        </div>
+      </div>
+
+      <section class="category is-active" id="tercos">
     <div class="category-head">
       <h2><svg><use href="#ic-rosary"/></svg>Terços e Rosários</h2>
       <span class="category-count">4 itens</span>
@@ -680,10 +867,13 @@
     </div>
   </section>
 
-  <footer>
-    <span>Catálogo modelo — substitua nome da loja, produtos, fotos e preços pelos reais.</span>
-    <span>contato@sualoja.com.br · (00) 00000-0000</span>
-  </footer>
+      <footer>
+        <span>Catálogo modelo — substitua nome da loja, produtos, fotos e preços pelos reais.</span>
+        <span>contato@sualoja.com.br · (00) 00000-0000</span>
+      </footer>
+
+    </div>
+  </div>
 </main>
 
 <a class="wa-float" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
@@ -709,6 +899,84 @@
         e.preventDefault();
         showTab(l.getAttribute('href').slice(1));
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Featured-niches carousel
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var dotsWrap = document.getElementById('carouselDots');
+    var current = 0;
+    var autoplayTimer;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    slides.forEach(function (slide, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Ir para o destaque ' + (i + 1));
+      if (i === 0) dot.classList.add('is-active');
+      dot.addEventListener('click', function () { goToSlide(i); resetAutoplay(); });
+      dotsWrap.appendChild(dot);
+
+      var cta = slide.querySelector('.slide-cta');
+      if (cta) {
+        cta.addEventListener('click', function () {
+          showTab(slide.getAttribute('data-cat'));
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function goToSlide(i) {
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      current = i;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+    }
+
+    function startAutoplay() {
+      if (reduceMotion || slides.length < 2) return;
+      autoplayTimer = setInterval(function () {
+        goToSlide((current + 1) % slides.length);
+      }, 5000);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayTimer);
+      startAutoplay();
+    }
+
+    startAutoplay();
+
+    // Product search
+    var searchInput = document.getElementById('searchInput');
+    var allCards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+    var allSections = Array.prototype.slice.call(document.querySelectorAll('section.category'));
+
+    searchInput.addEventListener('input', function () {
+      var q = searchInput.value.trim().toLowerCase();
+
+      if (!q) {
+        allCards.forEach(function (c) { c.classList.remove('is-hidden'); });
+        allSections.forEach(function (s) { s.classList.remove('force-show', 'is-hidden'); });
+        return;
+      }
+
+      allSections.forEach(function (s) { s.classList.add('force-show'); });
+
+      allCards.forEach(function (c) {
+        var title = c.querySelector('h3').textContent.toLowerCase();
+        var desc = c.querySelector('p').textContent.toLowerCase();
+        var match = title.indexOf(q) !== -1 || desc.indexOf(q) !== -1;
+        c.classList.toggle('is-hidden', !match);
+      });
+
+      allSections.forEach(function (s) {
+        var anyVisible = Array.prototype.slice.call(s.querySelectorAll('.card'))
+          .some(function (c) { return !c.classList.contains('is-hidden'); });
+        s.classList.toggle('is-hidden', !anyVisible);
       });
     });
   })();
