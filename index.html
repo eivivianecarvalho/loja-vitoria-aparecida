@@ -607,6 +607,52 @@
     font-size: 0.78rem;
   }
 
+  .footer-payment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 1.8rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+  .footer-payment h4 {
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 0.6rem;
+  }
+  .payment-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .pay-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    background: var(--paper-raised-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.32rem 0.6rem;
+  }
+  .footer-seal {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .footer-seal svg { width: 24px; height: 24px; }
+
+  .footer-legal {
+    margin-top: 1.4rem;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
   @media (max-width: 640px) {
     .footer-cols { grid-template-columns: repeat(2, 1fr); }
   }
@@ -644,6 +690,41 @@
     border-radius: 999px;
     box-shadow: 0 1px 3px var(--shadow);
   }
+
+  /* ---------- Buy options (per product) ---------- */
+
+  .buy-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .buy-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .buy-links {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .buy-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: transform 0.15s ease;
+  }
+  .buy-btn svg { width: 15px; height: 15px; }
+  .buy-btn:hover { transform: translateY(-2px); }
+  .buy-whatsapp { background: #25d366; }
+  .buy-shopee { background: #ee4d2d; }
+  .buy-ml { background: #ffe600; color: #1a1a1a; }
+  .buy-tiktok { background: #000; }
 
   /* ---------- WhatsApp float button ---------- */
 
@@ -776,9 +857,22 @@
       <path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/>
       <path d="M14 3c.3 2 1.8 3.6 4 4"/>
     </symbol>
+    <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6Z"/>
+      <path d="M9 12.3l2 2 4-4.3"/>
+    </symbol>
     <symbol id="ic-whatsapp" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 1.8a8.2 8.2 0 0 1 6.9 12.6l-.3.4.9 3.3-3.4-.9-.4.2A8.2 8.2 0 1 1 12 3.8Z"/>
       <path d="M9 7.6c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-2-1c-.3-.1-.5-.2-.7.2l-.5.8c-.1.2-.3.2-.5.1-.7-.3-1.7-.8-2.5-1.6-.7-.7-1.2-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5c.2-.2.2-.4.1-.6L9 7.6Z"/>
+    </symbol>
+    <symbol id="ic-shopee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 8h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8Z"/>
+      <path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>
+    </symbol>
+    <symbol id="ic-ml" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 4h2l2.3 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 7H6.2"/>
+      <circle cx="9.5" cy="20" r="1.2" fill="currentColor" stroke="none"/>
+      <circle cx="17" cy="20" r="1.2" fill="currentColor" stroke="none"/>
     </symbol>
   </defs>
 </svg>
@@ -911,6 +1005,16 @@
         <h3>Terço de Madeira de Oliveira</h3>
         <p>Contas em madeira de oliveira legítima, crucifixo em metal envelhecido.</p>
         <div class="card-foot"><span class="price">R$ 89,90</span><span class="material">Madeira</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ter%C3%A7o%20de%20Madeira%20de%20Oliveira" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <span class="badge-bestseller">Mais vendido</span>
@@ -918,18 +1022,48 @@
         <h3>Rosário Nossa Senhora Aparecida</h3>
         <p>Contas em vidro azul facetado, medalha central de Aparecida.</p>
         <div class="card-foot"><span class="price">R$ 64,90</span><span class="material">Vidro</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ros%C3%A1rio%20Nossa%20Senhora%20Aparecida" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
         <h3>Rosário de Cristal</h3>
         <p>Contas facetadas em cristal translúcido, acabamento dourado.</p>
         <div class="card-foot"><span class="price">R$ 119,90</span><span class="material">Cristal</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ros%C3%A1rio%20de%20Cristal" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
         <h3>Terço Infantil Colorido</h3>
         <p>Contas coloridas resistentes, ideal para crianças em catequese.</p>
         <div class="card-foot"><span class="price">R$ 39,90</span><span class="material">Acrílico</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ter%C3%A7o%20Infantil%20Colorido" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -946,18 +1080,48 @@
         <h3>Dezena Missionária de Corda</h3>
         <p>Nó tradicional franciscano em cordão encerado, leve e resistente.</p>
         <div class="card-foot"><span class="price">R$ 24,90</span><span class="material">Cordão</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Dezena%20Mission%C3%A1ria%20de%20Corda" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
         <h3>Dezena de Madeira</h3>
         <p>Compacta, cabe no bolso ou na bolsa para oração ao longo do dia.</p>
         <div class="card-foot"><span class="price">R$ 19,90</span><span class="material">Madeira</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Dezena%20de%20Madeira" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
         <h3>Dezena de Sementes Naturais</h3>
         <p>Sementes de açaí selecionadas, produção artesanal.</p>
         <div class="card-foot"><span class="price">R$ 27,90</span><span class="material">Semente</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Dezena%20de%20Sementes%20Naturais" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -974,18 +1138,48 @@
         <h3>Medalha Milagrosa</h3>
         <p>Prata 925, cordão em veludo incluso.</p>
         <div class="card-foot"><span class="price">R$ 74,90</span><span class="material">Prata</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Medalha%20Milagrosa" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
         <h3>Medalha São Bento</h3>
         <p>Latão banhado a ouro, dupla face com oração de proteção.</p>
         <div class="card-foot"><span class="price">R$ 32,90</span><span class="material">Latão</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Medalha%20S%C3%A3o%20Bento" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
         <h3>Medalha Sagrado Coração de Jesus</h3>
         <p>Esmaltada à mão, acabamento dourado fosco.</p>
         <div class="card-foot"><span class="price">R$ 38,90</span><span class="material">Esmalte</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Medalha%20Sagrado%20Cora%C3%A7%C3%A3o%20de%20Jesus" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -1002,18 +1196,48 @@
         <h3>Nossa Senhora Aparecida — 20cm</h3>
         <p>Resina pintada à mão, acabamento em pó de mármore.</p>
         <div class="card-foot"><span class="price">R$ 149,90</span><span class="material">Resina</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Nossa%20Senhora%20Aparecida%20%E2%80%94%2020cm" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
         <h3>São Miguel Arcanjo — 30cm</h3>
         <p>Detalhes em dourado, base estável para altar ou estante.</p>
         <div class="card-foot"><span class="price">R$ 219,90</span><span class="material">Resina</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20S%C3%A3o%20Miguel%20Arcanjo%20%E2%80%94%2030cm" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
         <h3>Sagrada Família em Madeira</h3>
         <p>Peça talhada artesanalmente, acabamento natural.</p>
         <div class="card-foot"><span class="price">R$ 179,90</span><span class="material">Madeira</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Sagrada%20Fam%C3%ADlia%20em%20Madeira" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -1029,12 +1253,32 @@
         <h3>Santinhos Santa Teresinha (pacote c/10)</h3>
         <p>Oração impressa no verso, papel couché.</p>
         <div class="card-foot"><span class="price">R$ 12,90</span><span class="material">Papel</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Santinhos%20Santa%20Teresinha%20(pacote%20c%2F10)" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-card"/></svg></div>
         <h3>Estampa São Francisco de Assis</h3>
         <p>Impressão em papel couché, acabamento fosco.</p>
         <div class="card-foot"><span class="price">R$ 4,90</span><span class="material">Papel</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Estampa%20S%C3%A3o%20Francisco%20de%20Assis" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <span class="badge-bestseller">Mais vendido</span>
@@ -1042,6 +1286,16 @@
         <h3>Novena Nossa Senhora do Perpétuo Socorro</h3>
         <p>Livreto com oração diária para os nove dias.</p>
         <div class="card-foot"><span class="price">R$ 9,90</span><span class="material">Livreto</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Novena%20Nossa%20Senhora%20do%20Perp%C3%A9tuo%20Socorro" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -1058,24 +1312,64 @@
         <h3>Bíblia Sagrada — Edição de Aparecida</h3>
         <p>Capa em couro sintético, letra grande, mapas bíblicos.</p>
         <div class="card-foot"><span class="price">R$ 129,90</span><span class="material">Livro</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20B%C3%ADblia%20Sagrada%20%E2%80%94%20Edi%C3%A7%C3%A3o%20de%20Aparecida" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
         <h3>Catecismo da Igreja Católica</h3>
         <p>Edição compacta, tradução CNBB.</p>
         <div class="card-foot"><span class="price">R$ 79,90</span><span class="material">Livro</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Catecismo%20da%20Igreja%20Cat%C3%B3lica" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
         <h3>Diário de Santa Faustina</h3>
         <p>Divina Misericórdia em Minha Alma, edição integral.</p>
         <div class="card-foot"><span class="price">R$ 59,90</span><span class="material">Livro</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Di%C3%A1rio%20de%20Santa%20Faustina" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
       <article class="card">
         <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
         <h3>Missal Dominical</h3>
         <p>Leituras completas do ano litúrgico vigente.</p>
         <div class="card-foot"><span class="price">R$ 49,90</span><span class="material">Livro</span></div>
+      
+        <div class="buy-options">
+          <span class="buy-label">Comprar em:</span>
+          <div class="buy-links">
+            <a class="buy-btn buy-whatsapp" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Missal%20Dominical" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
+            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee"/></svg></a>
+            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml"/></svg></a>
+            <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok"/></svg></a>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -1121,7 +1415,29 @@
           </div>
         </div>
 
-        <div class="footer-note">Catálogo modelo — substitua nome da loja, redes sociais, produtos, fotos e preços pelos reais.</div>
+        <div class="footer-payment">
+          <div>
+            <h4>Formas de pagamento</h4>
+            <div class="payment-badges">
+              <span class="pay-badge">Pix</span>
+              <span class="pay-badge">Visa</span>
+              <span class="pay-badge">Master</span>
+              <span class="pay-badge">Elo</span>
+              <span class="pay-badge">Boleto</span>
+            </div>
+          </div>
+          <div class="footer-seal">
+            <svg viewBox="0 0 24 24"><use href="#ic-shield"/></svg>
+            <span>Compra segura</span>
+          </div>
+        </div>
+
+        <div class="footer-legal">
+          [Razão social] · [Endereço completo] · CNPJ 00.000.000/0000-00<br>
+          © Loja Vitória Aparecida 2026 — Todos os direitos reservados
+        </div>
+
+        <div class="footer-note">Catálogo modelo — substitua nome da loja, CNPJ, redes sociais, links de venda, produtos, fotos e preços pelos reais.</div>
       </footer>
 
     </div>
