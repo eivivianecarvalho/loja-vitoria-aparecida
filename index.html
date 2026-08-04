@@ -435,6 +435,18 @@
     section.category { animation: none; }
   }
 
+  .breadcrumb {
+    font-size: 0.76rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.7rem;
+  }
+  .breadcrumb a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .breadcrumb a:hover { color: var(--wine); }
+  .breadcrumb span { margin: 0 0.4rem; }
+
   .category-head {
     display: flex;
     align-items: baseline;
@@ -1034,6 +1046,7 @@
       </div>
 
       <section class="category is-active" id="tercos">
+    <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Terços e Rosários</div>
     <div class="category-head">
       <h2><svg><use href="#ic-rosary"/></svg>Terços e Rosários</h2>
       <span class="category-count">4 itens</span>
@@ -1108,6 +1121,7 @@
   </section>
 
   <section class="category" id="dezenas">
+    <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Dezenas</div>
     <div class="category-head">
       <h2><svg><use href="#ic-decade"/></svg>Dezenas</h2>
       <span class="category-count">3 itens</span>
@@ -1166,6 +1180,7 @@
   </section>
 
   <section class="category" id="medalhas">
+    <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Medalhas</div>
     <div class="category-head">
       <h2><svg><use href="#ic-medal"/></svg>Medalhas</h2>
       <span class="category-count">3 itens</span>
@@ -1224,6 +1239,7 @@
   </section>
 
   <section class="category" id="imagens">
+    <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Imagens Sacras</div>
     <div class="category-head">
       <h2><svg><use href="#ic-image"/></svg>Imagens Sacras</h2>
       <span class="category-count">3 itens</span>
@@ -1282,6 +1298,7 @@
   </section>
 
   <section class="category" id="santos">
+    <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Santos e Estampas</div>
     <div class="category-head">
       <h2><svg><use href="#ic-card"/></svg>Santos e Estampas</h2>
       <span class="category-count">3 itens</span>
@@ -1340,6 +1357,7 @@
   </section>
 
   <section class="category" id="livros">
+    <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Livros</div>
     <div class="category-head">
       <h2><svg><use href="#ic-book"/></svg>Livros</h2>
       <span class="category-count">4 itens</span>
@@ -1414,6 +1432,7 @@
   </section>
 
       <section class="category" id="hospedagem">
+        <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Hospede-se em Aparecida – SP</div>
         <div class="category-head">
           <h2><svg><use href="#ic-stay"/></svg>Hospede-se em Aparecida – SP</h2>
         </div>
@@ -1500,6 +1519,14 @@
       l.addEventListener('click', function (e) {
         e.preventDefault();
         showTab(l.getAttribute('href').slice(1));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Breadcrumb "Início" links
+    Array.prototype.slice.call(document.querySelectorAll('.breadcrumb-home')).forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
