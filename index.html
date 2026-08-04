@@ -180,7 +180,9 @@
   }
   .trust-bar .container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 480px;
+    margin: 0 auto;
     gap: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -200,9 +202,6 @@
     display: block;
     font-size: 0.74rem;
     color: var(--ink-soft);
-  }
-  @media (max-width: 860px) {
-    .trust-bar .container { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 480px) {
     .trust-bar .container { grid-template-columns: 1fr; }
@@ -706,17 +705,6 @@
     * { transition: none !important; }
   }
 
-  /* ---------- Promo bar ---------- */
-
-  .promo-bar {
-    background: var(--wine);
-    color: #fdfaf3;
-    text-align: center;
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-    padding: 0.55rem 1rem;
-  }
-
   /* ---------- Bestseller badge ---------- */
 
   .card { position: relative; }
@@ -794,8 +782,6 @@
 </style>
 </head>
 <body>
-
-<div class="promo-bar">Frete grátis para Aparecida – SP em compras acima de R$ 150 · 5% de desconto no Pix</div>
 
 <svg width="0" height="0" style="position:absolute">
   <defs>
@@ -962,14 +948,6 @@
     <div class="trust-item">
       <svg viewBox="0 0 24 24"><use href="#ic-truck"/></svg>
       <div><strong>Entrega para todo o Brasil</strong><span>Envio para todos os estados</span></div>
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24"><use href="#ic-tag"/></svg>
-      <div><strong>5% de desconto</strong><span>Pagando no Pix</span></div>
-    </div>
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24"><use href="#ic-paycard"/></svg>
-      <div><strong>Parcele em até 6x</strong><span>No cartão de crédito</span></div>
     </div>
     <div class="trust-item">
       <svg viewBox="0 0 24 24"><use href="#ic-headset"/></svg>
