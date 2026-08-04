@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja Vitória Aparecida — Catálogo de Artigos Religiosos</title>
+<style>
+  :root {
+    --paper: #eef3f9;
+    --paper-raised: #ffffff;
+    --paper-raised-2: #e2ecf7;
+    --ink: #0f2440;
+    --ink-soft: #51698a;
+    --wine: #1d5fae;
+    --gold: #123a66;
+    --gold-bright: #1d5fae;
+    --line: rgba(15, 36, 64, 0.15);
+    --shadow: rgba(15, 36, 64, 0.10);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #071627;
+      --paper-raised: #0e2440;
+      --paper-raised-2: #142e50;
+      --ink: #eef3f9;
+      --ink-soft: #a7bcd6;
+      --wine: #5b9bdf;
+      --gold: #bcd4ef;
+      --gold-bright: #6fb0ea;
+      --line: rgba(238, 243, 249, 0.16);
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Optima, Candara, "Noto Sans", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---------- Header ---------- */
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 0 0.9rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .brand svg { flex: none; width: 22px; height: 22px; color: var(--wine); align-self: center; }
+
+  .brand-name {
+    font-size: 1.35rem;
+    letter-spacing: 0.01em;
+  }
+
+  .brand-tag {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+
+  .item-count {
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  nav.pills {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0 0 0.9rem;
+    scrollbar-width: none;
+  }
+  nav.pills::-webkit-scrollbar { display: none; }
+
+  nav.pills a {
+    flex: none;
+    text-decoration: none;
+    font-size: 0.82rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.pills a.active,
+  nav.pills a:hover {
+    background: var(--wine);
+    border-color: var(--wine);
+    color: var(--paper-raised);
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: 2.6rem 0 2.1rem;
+    display: grid;
+    gap: 0.9rem;
+    max-width: 620px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  }
+
+  .hero p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    max-width: 46ch;
+  }
+
+  .editor-note {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    background: var(--paper-raised);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 0.7rem 0.95rem;
+  }
+  .editor-note strong { color: var(--ink); }
+
+  /* ---------- Category sections ---------- */
+
+  section.category {
+    padding: 2.4rem 0 0.6rem;
+    scroll-margin-top: 6.2rem;
+  }
+
+  .category-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.7rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .category-head h2 {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .category-head h2 svg { width: 20px; height: 20px; color: var(--wine); }
+
+  .category-count {
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.1rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.1rem 1.1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+
+  .card-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: var(--paper-raised-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wine);
+  }
+  .card-icon svg { width: 26px; height: 26px; }
+
+  .card h3 {
+    font-size: 1.02rem;
+    line-height: 1.3;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .price {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    color: var(--gold-bright);
+    font-size: 0.98rem;
+  }
+
+  .material {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--paper-raised-2);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    margin-top: 3rem;
+    border-top: 1px solid var(--line);
+    padding: 1.8rem 0 2.4rem;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="ic-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <line x1="12" y1="3" x2="12" y2="21"/>
+      <line x1="6" y1="8" x2="18" y2="8"/>
+    </symbol>
+    <symbol id="ic-rosary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <circle cx="8" cy="6" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="13" cy="4.4" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="17.6" cy="7.4" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="19.2" cy="12.4" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="17" cy="17" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="19.3" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="7" cy="17" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="4.8" cy="12.4" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="6.4" cy="7.4" r="1.1" fill="currentColor" stroke="none"/>
+      <path d="M12 19.3 L12 23"/>
+      <line x1="10" y1="21.4" x2="14" y2="21.4"/>
+    </symbol>
+    <symbol id="ic-decade" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <path d="M3 6c3 3 5 3 8 0" stroke-dasharray="0 0"/>
+      <circle cx="3.4" cy="6.4" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="6" cy="8.3" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="9" cy="8.6" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="11.6" cy="6.6" r="1" fill="currentColor" stroke="none"/>
+      <path d="M11.6 6.6c4 3.6 6 8.2 6 13.4" stroke-dasharray="0 0"/>
+      <circle cx="14.2" cy="10.6" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="16" cy="13.6" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="17.1" cy="16.8" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="17.6" cy="20" r="1" fill="currentColor" stroke="none"/>
+      <line x1="17.6" y1="20" x2="17.6" y2="23"/>
+      <line x1="16" y1="21.6" x2="19.2" y2="21.6"/>
+    </symbol>
+    <symbol id="ic-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 2h6l2 5-5 3-5-3 2-5Z"/>
+      <circle cx="12" cy="15" r="7"/>
+      <path d="M12 11.3l1.05 2.13 2.35.34-1.7 1.66.4 2.34L12 16.66l-2.1 1.1.4-2.34-1.7-1.66 2.35-.34L12 11.3Z" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 21V10a8 8 0 0116 0v11"/>
+      <line x1="4" y1="21" x2="20" y2="21"/>
+      <circle cx="12" cy="9" r="2.4"/>
+      <path d="M8.5 17c.6-2.4 2-3.6 3.5-3.6s2.9 1.2 3.5 3.6"/>
+    </symbol>
+    <symbol id="ic-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4.5" y="3" width="15" height="18" rx="1.4"/>
+      <circle cx="12" cy="9.3" r="2.6"/>
+      <path d="M8.3 16.6c.7-2 2-3 3.7-3s3 1 3.7 3"/>
+    </symbol>
+    <symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5.2c2.4-1 5-1 8 .4v14c-3-1.4-5.6-1.4-8-.4V5.2Z"/>
+      <path d="M20 5.2c-2.4-1-5-1-8 .4v14c3-1.4 5.6-1.4 8-.4V5.2Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-top">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><use href="#ic-cross"/></svg>
+        <span class="brand-name">Loja Vitória Aparecida</span>
+        <span class="brand-tag">— artigos de devoção</span>
+      </div>
+      <span class="item-count">21 produtos · 6 categorias</span>
+    </div>
+    <nav class="pills" id="catNav">
+      <a href="#tercos">Terços e Rosários</a>
+      <a href="#dezenas">Dezenas</a>
+      <a href="#medalhas">Medalhas</a>
+      <a href="#imagens">Imagens Sacras</a>
+      <a href="#santos">Santos e Estampas</a>
+      <a href="#livros">Livros</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="hero">
+    <h1>Catálogo de produtos</h1>
+    <p>Modelo de catálogo para sua loja católica, organizado por categoria e pronto para receber seus produtos, fotos e preços reais.</p>
+    <div class="editor-note">
+      <strong>Como usar:</strong> este catálogo vem com produtos de exemplo. Me diga os itens reais da sua loja (nome, preço, material, foto) e eu atualizo cada seção — ou edite diretamente o texto abaixo.
+    </div>
+  </div>
+
+  <section class="category" id="tercos">
+    <div class="category-head">
+      <h2><svg><use href="#ic-rosary"/></svg>Terços e Rosários</h2>
+      <span class="category-count">4 itens</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
+        <h3>Terço de Madeira de Oliveira</h3>
+        <p>Contas em madeira de oliveira legítima, crucifixo em metal envelhecido.</p>
+        <div class="card-foot"><span class="price">R$ 89,90</span><span class="material">Madeira</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
+        <h3>Rosário Nossa Senhora Aparecida</h3>
+        <p>Contas em vidro azul facetado, medalha central de Aparecida.</p>
+        <div class="card-foot"><span class="price">R$ 64,90</span><span class="material">Vidro</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
+        <h3>Rosário de Cristal</h3>
+        <p>Contas facetadas em cristal translúcido, acabamento dourado.</p>
+        <div class="card-foot"><span class="price">R$ 119,90</span><span class="material">Cristal</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
+        <h3>Terço Infantil Colorido</h3>
+        <p>Contas coloridas resistentes, ideal para crianças em catequese.</p>
+        <div class="card-foot"><span class="price">R$ 39,90</span><span class="material">Acrílico</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="category" id="dezenas">
+    <div class="category-head">
+      <h2><svg><use href="#ic-decade"/></svg>Dezenas</h2>
+      <span class="category-count">3 itens</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
+        <h3>Dezena Missionária de Corda</h3>
+        <p>Nó tradicional franciscano em cordão encerado, leve e resistente.</p>
+        <div class="card-foot"><span class="price">R$ 24,90</span><span class="material">Cordão</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
+        <h3>Dezena de Madeira</h3>
+        <p>Compacta, cabe no bolso ou na bolsa para oração ao longo do dia.</p>
+        <div class="card-foot"><span class="price">R$ 19,90</span><span class="material">Madeira</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
+        <h3>Dezena de Sementes Naturais</h3>
+        <p>Sementes de açaí selecionadas, produção artesanal.</p>
+        <div class="card-foot"><span class="price">R$ 27,90</span><span class="material">Semente</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="category" id="medalhas">
+    <div class="category-head">
+      <h2><svg><use href="#ic-medal"/></svg>Medalhas</h2>
+      <span class="category-count">3 itens</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
+        <h3>Medalha Milagrosa</h3>
+        <p>Prata 925, cordão em veludo incluso.</p>
+        <div class="card-foot"><span class="price">R$ 74,90</span><span class="material">Prata</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
+        <h3>Medalha São Bento</h3>
+        <p>Latão banhado a ouro, dupla face com oração de proteção.</p>
+        <div class="card-foot"><span class="price">R$ 32,90</span><span class="material">Latão</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
+        <h3>Medalha Sagrado Coração de Jesus</h3>
+        <p>Esmaltada à mão, acabamento dourado fosco.</p>
+        <div class="card-foot"><span class="price">R$ 38,90</span><span class="material">Esmalte</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="category" id="imagens">
+    <div class="category-head">
+      <h2><svg><use href="#ic-image"/></svg>Imagens Sacras</h2>
+      <span class="category-count">3 itens</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
+        <h3>Nossa Senhora Aparecida — 20cm</h3>
+        <p>Resina pintada à mão, acabamento em pó de mármore.</p>
+        <div class="card-foot"><span class="price">R$ 149,90</span><span class="material">Resina</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
+        <h3>São Miguel Arcanjo — 30cm</h3>
+        <p>Detalhes em dourado, base estável para altar ou estante.</p>
+        <div class="card-foot"><span class="price">R$ 219,90</span><span class="material">Resina</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
+        <h3>Sagrada Família em Madeira</h3>
+        <p>Peça talhada artesanalmente, acabamento natural.</p>
+        <div class="card-foot"><span class="price">R$ 179,90</span><span class="material">Madeira</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="category" id="santos">
+    <div class="category-head">
+      <h2><svg><use href="#ic-card"/></svg>Santos e Estampas</h2>
+      <span class="category-count">3 itens</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-card"/></svg></div>
+        <h3>Santinhos Santa Teresinha (pacote c/10)</h3>
+        <p>Oração impressa no verso, papel couché.</p>
+        <div class="card-foot"><span class="price">R$ 12,90</span><span class="material">Papel</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-card"/></svg></div>
+        <h3>Estampa São Francisco de Assis</h3>
+        <p>Impressão em papel couché, acabamento fosco.</p>
+        <div class="card-foot"><span class="price">R$ 4,90</span><span class="material">Papel</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-card"/></svg></div>
+        <h3>Novena Nossa Senhora do Perpétuo Socorro</h3>
+        <p>Livreto com oração diária para os nove dias.</p>
+        <div class="card-foot"><span class="price">R$ 9,90</span><span class="material">Livreto</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="category" id="livros">
+    <div class="category-head">
+      <h2><svg><use href="#ic-book"/></svg>Livros</h2>
+      <span class="category-count">4 itens</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
+        <h3>Bíblia Sagrada — Edição de Aparecida</h3>
+        <p>Capa em couro sintético, letra grande, mapas bíblicos.</p>
+        <div class="card-foot"><span class="price">R$ 129,90</span><span class="material">Livro</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
+        <h3>Catecismo da Igreja Católica</h3>
+        <p>Edição compacta, tradução CNBB.</p>
+        <div class="card-foot"><span class="price">R$ 79,90</span><span class="material">Livro</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
+        <h3>Diário de Santa Faustina</h3>
+        <p>Divina Misericórdia em Minha Alma, edição integral.</p>
+        <div class="card-foot"><span class="price">R$ 59,90</span><span class="material">Livro</span></div>
+      </article>
+      <article class="card">
+        <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
+        <h3>Missal Dominical</h3>
+        <p>Leituras completas do ano litúrgico vigente.</p>
+        <div class="card-foot"><span class="price">R$ 49,90</span><span class="material">Livro</span></div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <span>Catálogo modelo — substitua nome da loja, produtos, fotos e preços pelos reais.</span>
+    <span>contato@sualoja.com.br · (00) 00000-0000</span>
+  </footer>
+</main>
+
+<script>
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('#catNav a'));
+    var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
+    function setActive(id) {
+      links.forEach(function (l) {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function (s) { if (s) obs.observe(s); });
+    }
+
+    links.forEach(function (l) {
+      l.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = document.querySelector(l.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
