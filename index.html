@@ -409,6 +409,13 @@
   }
   .editor-note strong { color: var(--ink); }
 
+  .no-results {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    padding: 2.4rem 1rem;
+  }
+
   /* ---------- Category sections ---------- */
 
   section.category {
@@ -1029,6 +1036,8 @@
         </div>
       </div>
 
+      <div class="no-results" id="noResults" hidden>Nenhum produto encontrado para essa busca.</div>
+
       <section class="category is-active" id="tercos">
     <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Terços e Rosários</div>
     <div class="category-head">
@@ -1455,54 +1464,6 @@
       });
     });
 
-    // Featured-niches carousel
-    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-    var dotsWrap = document.getElementById('carouselDots');
-    var current = 0;
-    var autoplayTimer;
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    slides.forEach(function (slide, i) {
-      var dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', 'Ir para o destaque ' + (i + 1));
-      if (i === 0) dot.classList.add('is-active');
-      dot.addEventListener('click', function () { goToSlide(i); resetAutoplay(); });
-      dotsWrap.appendChild(dot);
-
-      var cta = slide.querySelector('.slide-cta');
-      if (cta) {
-        cta.addEventListener('click', function () {
-          showTab(slide.getAttribute('data-cat'));
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-    });
-
-    var dots = Array.prototype.slice.call(dotsWrap.children);
-
-    function goToSlide(i) {
-      slides[current].classList.remove('is-active');
-      dots[current].classList.remove('is-active');
-      current = i;
-      slides[current].classList.add('is-active');
-      dots[current].classList.add('is-active');
-    }
-
-    function startAutoplay() {
-      if (reduceMotion || slides.length < 2) return;
-      autoplayTimer = setInterval(function () {
-        goToSlide((current + 1) % slides.length);
-      }, 5000);
-    }
-
-    function resetAutoplay() {
-      clearInterval(autoplayTimer);
-      startAutoplay();
-    }
-
-    startAutoplay();
-
     // Product search
     var searchInput = document.getElementById('searchInput');
     var searchBtn = document.getElementById('searchBtn');
@@ -1511,20 +1472,27 @@
 
     function runSearch() {
       var q = searchInput.value.trim().toLowerCase();
+      var noResults = document.getElementById('noResults');
 
       if (!q) {
         allCards.forEach(function (c) { c.classList.remove('is-hidden'); });
         allSections.forEach(function (s) { s.classList.remove('force-show', 'is-hidden'); });
+        noResults.hidden = true;
         return;
       }
 
       allSections.forEach(function (s) { s.classList.add('force-show'); });
 
+      var totalVisible = 0;
+
       allCards.forEach(function (c) {
+        var categoryName = c.closest('section.category').querySelector('.category-head h2').textContent.toLowerCase();
         var title = c.querySelector('h3').textContent.toLowerCase();
         var desc = c.querySelector('p').textContent.toLowerCase();
-        var match = title.indexOf(q) !== -1 || desc.indexOf(q) !== -1;
+        var material = c.querySelector('.material') ? c.querySelector('.material').textContent.toLowerCase() : '';
+        var match = title.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || material.indexOf(q) !== -1 || categoryName.indexOf(q) !== -1;
         c.classList.toggle('is-hidden', !match);
+        if (match) totalVisible++;
       });
 
       allSections.forEach(function (s) {
@@ -1532,6 +1500,8 @@
           .some(function (c) { return !c.classList.contains('is-hidden'); });
         s.classList.toggle('is-hidden', !anyVisible);
       });
+
+      noResults.hidden = totalVisible > 0;
     }
 
     searchInput.addEventListener('input', runSearch);
