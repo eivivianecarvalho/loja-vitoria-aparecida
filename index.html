@@ -57,6 +57,53 @@
     margin: 0;
   }
 
+  /* ---------- Splash / opening screen ---------- */
+
+  .splash {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    background: var(--wine);
+    cursor: pointer;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  .splash.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .splash-mark {
+    width: 96px;
+    height: 96px;
+    animation: splash-in 0.7s ease both;
+  }
+  .splash-name {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 1.9rem;
+    color: var(--gold);
+    animation: splash-in 0.7s ease 0.12s both;
+  }
+  .splash-tag {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    animation: splash-in 0.7s ease 0.24s both;
+  }
+  @keyframes splash-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .splash-mark, .splash-name, .splash-tag { animation: none; }
+    .splash { transition: none; }
+  }
+
   a { color: inherit; }
 
   .container {
@@ -89,6 +136,8 @@
     display: flex;
     align-items: center;
     gap: 0.65rem;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .brand-mark { flex: none; width: 50px; height: 50px; }
@@ -927,6 +976,12 @@
 </head>
 <body>
 
+<div class="splash" id="splash">
+  <svg class="splash-mark" viewBox="0 0 40 40"><use href="#ic-logo"/></svg>
+  <div class="splash-name">Loja Vitória</div>
+  <div class="splash-tag">Aparecida · SP</div>
+</div>
+
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <symbol id="ic-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
@@ -1081,13 +1136,13 @@
 <header class="site-header">
   <div class="container">
     <div class="header-top">
-      <div class="brand">
+      <a href="#" class="brand" id="brandHome">
         <svg class="brand-mark" viewBox="0 0 40 40"><use href="#ic-logo"/></svg>
         <div class="brand-text">
           <span class="brand-name">Loja Vitória</span>
           <span class="brand-tag">Aparecida · SP</span>
         </div>
-      </div>
+      </a>
       <div class="visit-info">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-pin"/></svg>
         <div>
@@ -1733,6 +1788,31 @@
       runSearch();
       searchInput.focus();
     });
+
+    // Logo / store name: go back to the main menu
+    document.getElementById('brandHome').addEventListener('click', function (e) {
+      e.preventDefault();
+      closeProductDetail();
+      searchInput.value = '';
+      runSearch();
+      showTab('tercos');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Opening splash screen (once per browser session)
+    var splash = document.getElementById('splash');
+    if (sessionStorage.getItem('lv_splash_seen')) {
+      splash.remove();
+    } else {
+      sessionStorage.setItem('lv_splash_seen', '1');
+      var reduceMotionSplash = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var dismissSplash = function () {
+        splash.classList.add('is-hidden');
+        setTimeout(function () { splash.remove(); }, reduceMotionSplash ? 0 : 650);
+      };
+      setTimeout(dismissSplash, reduceMotionSplash ? 300 : 1400);
+      splash.addEventListener('click', dismissSplash);
+    }
   })();
 </script>
 </body>
