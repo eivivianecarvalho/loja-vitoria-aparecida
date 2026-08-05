@@ -41,8 +41,10 @@
 
   * { box-sizing: border-box; }
 
+  html { overflow-x: hidden; }
   body {
     margin: 0;
+    overflow-x: hidden;
     background: var(--paper);
     color: var(--ink);
     font-family: Optima, Candara, "Noto Sans", "Segoe UI", system-ui, sans-serif;
@@ -282,11 +284,16 @@
 
   .cat-circles {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
     gap: 1.3rem;
-    padding: 1.5rem 0 0.4rem;
+    padding: 1.5rem 0.2rem 0.6rem;
   }
+  .cat-circles::-webkit-scrollbar { display: none; }
+  .cat-circle { flex: none; }
   .cat-circle {
     display: flex;
     flex-direction: column;
@@ -336,9 +343,14 @@
   .sidebar nav {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     gap: 0.5rem;
+    padding-bottom: 0.2rem;
   }
+  .sidebar nav::-webkit-scrollbar { display: none; }
 
   .sidebar nav a {
     display: flex;
@@ -888,9 +900,8 @@
 
   .buy-options {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 0.5rem;
   }
   .buy-label {
@@ -903,6 +914,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
+    min-width: 0;
+  }
+  .buy-options .buy-links,
+  .detail-buy .buy-links {
+    width: 100%;
   }
   .buy-btn {
     width: 40px;
