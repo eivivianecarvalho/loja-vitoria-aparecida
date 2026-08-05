@@ -438,6 +438,93 @@
     padding: 2.4rem 1rem;
   }
 
+  /* ---------- Product detail page ---------- */
+
+  .content.showing-detail > .cat-circles,
+  .content.showing-detail > .hero,
+  .content.showing-detail > .no-results,
+  .content.showing-detail > section.category {
+    display: none;
+  }
+
+  .product-detail { padding: 1.6rem 0 1rem; }
+
+  .detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.84rem;
+    color: var(--wine);
+    text-decoration: none;
+    margin-bottom: 1.2rem;
+  }
+  .detail-back:hover { text-decoration: underline; }
+
+  .detail-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 340px) 1fr;
+    gap: 2.2rem;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .detail-layout { grid-template-columns: 1fr; }
+  }
+
+  .detail-media {
+    aspect-ratio: 1;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .detail-icon {
+    width: 55%;
+    height: 55%;
+    border-radius: 50%;
+    background: var(--paper-raised-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wine);
+  }
+  .detail-icon svg { width: 55%; height: 55%; }
+
+  .detail-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 0.9rem;
+  }
+
+  .detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+  }
+  .detail-price { font-size: 1.15rem; padding: 0.35rem 0.9rem; }
+
+  .detail-desc {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 52ch;
+    margin: 0 0 2rem;
+  }
+
+  .detail-buy {
+    border-top: 1px solid var(--line);
+    padding-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .detail-buy .buy-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .detail-buy .buy-links { gap: 0.6rem; }
+
   /* ---------- Category sections ---------- */
 
   section.category {
@@ -518,10 +605,15 @@
     gap: 0.65rem;
     box-shadow: 0 1px 2px var(--shadow);
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
   }
   .card:hover {
     border-color: var(--teal);
     box-shadow: 0 3px 10px var(--shadow);
+  }
+  .card:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
   }
 
   .card-icon {
@@ -1071,6 +1163,32 @@
 
       <div class="no-results" id="noResults" hidden>Nenhum produto encontrado para essa busca.</div>
 
+      <div class="product-detail" id="productDetail" hidden>
+        <div class="breadcrumb">
+          <a href="#" class="breadcrumb-home">Início</a><span>›</span>
+          <a href="#" class="detail-cat-link"></a><span>›</span>
+          <span class="detail-product-name"></span>
+        </div>
+        <a href="#" class="detail-back">← Voltar para a lista</a>
+        <div class="detail-layout">
+          <div class="detail-media">
+            <div class="detail-icon"><svg viewBox="0 0 24 24"><use id="detailIconUse" href=""/></svg></div>
+          </div>
+          <div class="detail-info">
+            <h1 class="detail-title"></h1>
+            <div class="detail-meta">
+              <span class="price detail-price"></span>
+              <span class="material detail-material"></span>
+            </div>
+            <p class="detail-desc"></p>
+            <div class="detail-buy">
+              <span class="buy-label">Escolha por onde comprar</span>
+              <div class="buy-links" id="detailBuyLinks"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section class="category is-active" id="tercos">
     <div class="breadcrumb"><a href="#" class="breadcrumb-home">Início</a><span>›</span>Terços e Rosários</div>
     <div class="category-head">
@@ -1078,7 +1196,7 @@
       <span class="category-count">4 itens</span>
     </div>
     <div class="grid">
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
         <h3>Terço de Madeira de Oliveira</h3>
         <p>Contas em madeira de oliveira legítima, crucifixo em metal envelhecido.</p>
@@ -1094,7 +1212,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <span class="badge-bestseller">Mais vendido</span>
         <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
         <h3>Rosário Nossa Senhora Aparecida</h3>
@@ -1111,7 +1229,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
         <h3>Rosário de Cristal</h3>
         <p>Contas facetadas em cristal translúcido, acabamento dourado.</p>
@@ -1127,7 +1245,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-rosary"/></svg></div>
         <h3>Terço Infantil Colorido</h3>
         <p>Contas coloridas resistentes, ideal para crianças em catequese.</p>
@@ -1153,7 +1271,7 @@
       <span class="category-count">3 itens</span>
     </div>
     <div class="grid">
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <span class="badge-bestseller">Mais vendido</span>
         <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
         <h3>Dezena Missionária de Corda</h3>
@@ -1170,7 +1288,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
         <h3>Dezena de Madeira</h3>
         <p>Compacta, cabe no bolso ou na bolsa para oração ao longo do dia.</p>
@@ -1186,7 +1304,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-decade"/></svg></div>
         <h3>Dezena de Sementes Naturais</h3>
         <p>Sementes de açaí selecionadas, produção artesanal.</p>
@@ -1212,7 +1330,7 @@
       <span class="category-count">3 itens</span>
     </div>
     <div class="grid">
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <span class="badge-bestseller">Mais vendido</span>
         <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
         <h3>Medalha Milagrosa</h3>
@@ -1229,7 +1347,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
         <h3>Medalha São Bento</h3>
         <p>Latão banhado a ouro, dupla face com oração de proteção.</p>
@@ -1245,7 +1363,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-medal"/></svg></div>
         <h3>Medalha Sagrado Coração de Jesus</h3>
         <p>Esmaltada à mão, acabamento dourado fosco.</p>
@@ -1271,7 +1389,7 @@
       <span class="category-count">3 itens</span>
     </div>
     <div class="grid">
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <span class="badge-bestseller">Mais vendido</span>
         <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
         <h3>Nossa Senhora Aparecida — 20cm</h3>
@@ -1288,7 +1406,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
         <h3>São Miguel Arcanjo — 30cm</h3>
         <p>Detalhes em dourado, base estável para altar ou estante.</p>
@@ -1304,7 +1422,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-image"/></svg></div>
         <h3>Sagrada Família em Madeira</h3>
         <p>Peça talhada artesanalmente, acabamento natural.</p>
@@ -1330,7 +1448,7 @@
       <span class="category-count">4 itens</span>
     </div>
     <div class="grid">
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <span class="badge-bestseller">Mais vendido</span>
         <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
         <h3>Bíblia Sagrada — Edição de Aparecida</h3>
@@ -1347,7 +1465,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
         <h3>Catecismo da Igreja Católica</h3>
         <p>Edição compacta, tradução CNBB.</p>
@@ -1363,7 +1481,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
         <h3>Diário de Santa Faustina</h3>
         <p>Divina Misericórdia em Minha Alma, edição integral.</p>
@@ -1379,7 +1497,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card" tabindex="0" role="button">
         <div class="card-icon"><svg><use href="#ic-book"/></svg></div>
         <h3>Missal Dominical</h3>
         <p>Leituras completas do ano litúrgico vigente.</p>
@@ -1485,6 +1603,7 @@
     Array.prototype.slice.call(document.querySelectorAll('.breadcrumb-home')).forEach(function (a) {
       a.addEventListener('click', function (e) {
         e.preventDefault();
+        closeProductDetail();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
@@ -1492,9 +1611,81 @@
     // Category circles
     Array.prototype.slice.call(document.querySelectorAll('.cat-circle')).forEach(function (btn) {
       btn.addEventListener('click', function () {
+        closeProductDetail();
         showTab(btn.getAttribute('data-goto'));
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+    });
+
+    // Product detail page
+    var productDetail = document.getElementById('productDetail');
+    var contentEl = document.querySelector('.content');
+
+    function closeProductDetail() {
+      contentEl.classList.remove('showing-detail');
+      productDetail.hidden = true;
+    }
+
+    function openProductDetail(card) {
+      var section = card.closest('section.category');
+      var categoryName = section.querySelector('.category-head h2').textContent.trim();
+      var categoryId = section.id;
+      var iconHref = card.querySelector('.card-icon use').getAttribute('href');
+      var title = card.querySelector('h3').textContent;
+      var desc = card.querySelector('p').textContent;
+      var priceText = card.querySelector('.price').textContent;
+      var materialEl = card.querySelector('.material');
+      var buyLinksHTML = card.querySelector('.buy-options .buy-links').innerHTML;
+
+      document.getElementById('detailIconUse').setAttribute('href', iconHref);
+      productDetail.querySelector('.detail-title').textContent = title;
+      productDetail.querySelector('.detail-product-name').textContent = title;
+      productDetail.querySelector('.detail-price').textContent = priceText;
+      productDetail.querySelector('.detail-desc').textContent = desc;
+
+      var detailMaterial = productDetail.querySelector('.detail-material');
+      if (materialEl) {
+        detailMaterial.textContent = materialEl.textContent;
+        detailMaterial.hidden = false;
+      } else {
+        detailMaterial.hidden = true;
+      }
+
+      var catLink = productDetail.querySelector('.detail-cat-link');
+      catLink.textContent = categoryName;
+      catLink.setAttribute('data-goto', categoryId);
+
+      document.getElementById('detailBuyLinks').innerHTML = buyLinksHTML;
+
+      contentEl.classList.add('showing-detail');
+      productDetail.hidden = false;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    Array.prototype.slice.call(document.querySelectorAll('.card')).forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.buy-options')) return;
+        openProductDetail(card);
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.target.closest('.buy-options')) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openProductDetail(card);
+        }
+      });
+    });
+
+    productDetail.querySelector('.detail-back').addEventListener('click', function (e) {
+      e.preventDefault();
+      closeProductDetail();
+    });
+
+    productDetail.querySelector('.detail-cat-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      closeProductDetail();
+      showTab(this.getAttribute('data-goto'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Product search
