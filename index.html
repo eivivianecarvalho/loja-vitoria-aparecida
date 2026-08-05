@@ -728,6 +728,7 @@
 
   .buy-options {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
@@ -740,6 +741,7 @@
   }
   .buy-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.4rem;
   }
   .buy-btn {
@@ -758,6 +760,20 @@
   .buy-shopee { background: #ee4d2d; }
   .buy-ml { background: #ffe600; color: #1a1a1a; }
   .buy-tiktok { background: #000; }
+
+  .buy-btn.buy-pill {
+    width: auto;
+    height: 40px;
+    padding: 0 0.8rem 0 0.55rem;
+    border-radius: 999px;
+    gap: 0.4rem;
+  }
+  .buy-btn.buy-pill svg { width: 18px; height: 18px; }
+  .buy-btn.buy-pill span {
+    font-size: 0.76rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
 
   /* ---------- WhatsApp float button ---------- */
 
@@ -837,31 +853,11 @@
       <path d="M20 5.2c-2.4-1-5-1-8 .4v14c3-1.4 5.6-1.4 8-.4V5.2Z"/>
     </symbol>
     <symbol id="ic-logo" viewBox="0 0 40 40">
-      <circle cx="20" cy="20" r="18.4" fill="var(--paper-raised)" stroke="var(--gold)" stroke-width="1.6"/>
-      <circle cx="20" cy="20" r="15" fill="var(--gold)" opacity="0.14"/>
-
-      <path d="M11 32c-1-10 1-19 9-19.6c8 .6 10 9.6 9 19.6c-2.8 1-5.9 1.5-9 1.5s-6.2-.5-9-1.5Z" fill="var(--wine)" stroke="var(--gold)" stroke-width="0.6"/>
-      <path d="M14.5 32.6c-.6-7.6.6-14 5.5-14.4c4.9.4 6.1 6.8 5.5 14.4c-1.8.6-3.6.9-5.5.9s-3.7-.3-5.5-.9Z" fill="#7a4a2e"/>
-      <path d="M11 32c-1-10 1-19 9-19.6" fill="none" stroke="var(--gold)" stroke-width="0.8" stroke-linecap="round"/>
-      <path d="M29 32c1-10-1-19-9-19.6" fill="none" stroke="var(--gold)" stroke-width="0.8" stroke-linecap="round"/>
-
-      <path d="M14 24.3 14.6 23 15.2 24.3 16.5 24.9 15.2 25.5 14.6 26.8 14 25.5 12.7 24.9Z" fill="var(--gold)"/>
-      <path d="M25.4 26.3 25.9 25.3 26.4 26.3 27.4 26.8 26.4 27.3 25.9 28.3 25.4 27.3 24.4 26.8Z" fill="var(--gold)"/>
-
-      <circle cx="20" cy="13.5" r="4.1" fill="#7a4a2e"/>
-      <ellipse cx="17.3" cy="14.7" rx="0.9" ry="0.6" fill="#e8896b" opacity="0.7"/>
-      <ellipse cx="22.7" cy="14.7" rx="0.9" ry="0.6" fill="#e8896b" opacity="0.7"/>
-      <circle cx="18.2" cy="13.2" r="0.55" fill="#241a12"/>
-      <circle cx="21.8" cy="13.2" r="0.55" fill="#241a12"/>
-
-      <path d="M16.3 9.6 17.6 6 20 8.4 22.4 6 23.7 9.6 20 10.5Z" fill="var(--gold)"/>
-      <path d="M20 6 20 4.2" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
-      <path d="M19.2 4.4h1.6" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
-
-      <path d="M18.4 25.4c1-1 2.2-1 3.2 0-.2 1.5-.6 2.4-1.6 2.4s-1.4-.9-1.6-2.4Z" fill="#e7cba3"/>
-      <circle cx="20" cy="29" r="0.55" fill="var(--gold)"/>
-      <circle cx="20" cy="30.4" r="0.55" fill="var(--gold)"/>
-      <path d="M20 27.8v3.2" stroke="var(--gold)" stroke-width="0.6"/>
+      <circle cx="20" cy="20" r="18.4" fill="var(--wine)" stroke="var(--gold)" stroke-width="1.6"/>
+      <circle cx="20" cy="20" r="15.2" fill="none" stroke="var(--gold)" stroke-width="0.6" opacity="0.6"/>
+      <path d="M20 9v-3.4" stroke="var(--gold)" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M18.5 6.4h3" stroke="var(--gold)" stroke-width="1.3" stroke-linecap="round"/>
+      <text x="20" y="27" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15.5" font-weight="700" letter-spacing="0.5" text-anchor="middle" fill="var(--gold)">LV</text>
     </symbol>
     <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 21s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12Z"/>
@@ -1081,8 +1077,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ter%C3%A7o%20de%20Madeira%20de%20Oliveira" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1098,8 +1094,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ros%C3%A1rio%20Nossa%20Senhora%20Aparecida" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1114,8 +1110,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ros%C3%A1rio%20de%20Cristal" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1130,8 +1126,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Ter%C3%A7o%20Infantil%20Colorido" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1157,8 +1153,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Dezena%20Mission%C3%A1ria%20de%20Corda" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1173,8 +1169,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Dezena%20de%20Madeira" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1189,8 +1185,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Dezena%20de%20Sementes%20Naturais" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1216,8 +1212,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Medalha%20Milagrosa" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1232,8 +1228,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Medalha%20S%C3%A3o%20Bento" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1248,8 +1244,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Medalha%20Sagrado%20Cora%C3%A7%C3%A3o%20de%20Jesus" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1275,8 +1271,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Nossa%20Senhora%20Aparecida%20%E2%80%94%2020cm" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1291,8 +1287,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20S%C3%A3o%20Miguel%20Arcanjo%20%E2%80%94%2030cm" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1307,8 +1303,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Sagrada%20Fam%C3%ADlia%20em%20Madeira" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1333,8 +1329,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Santinhos%20Santa%20Teresinha%20(pacote%20c%2F10)" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1349,8 +1345,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Estampa%20S%C3%A3o%20Francisco%20de%20Assis" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1366,8 +1362,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Novena%20Nossa%20Senhora%20do%20Perp%C3%A9tuo%20Socorro" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1393,8 +1389,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20B%C3%ADblia%20Sagrada%20%E2%80%94%20Edi%C3%A7%C3%A3o%20de%20Aparecida" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1409,8 +1405,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Catecismo%20da%20Igreja%20Cat%C3%B3lica" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1425,8 +1421,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Di%C3%A1rio%20de%20Santa%20Faustina" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
@@ -1441,8 +1437,8 @@
           <span class="buy-label">Comprar em:</span>
           <div class="buy-links">
             <a class="buy-btn buy-whatsapp" href="https://wa.me/5512981172902?text=Ol%C3%A1!%20Tenho%20interesse%20no%20produto%3A%20Missal%20Dominical" target="_blank" rel="noopener" aria-label="Comprar pelo WhatsApp"><svg viewBox="0 0 24 24"><use href="#ic-whatsapp"/></svg></a>
-            <a class="buy-btn buy-shopee" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg></a>
-            <a class="buy-btn buy-ml" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg></a>
+            <a class="buy-btn buy-shopee buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar na Shopee"><svg viewBox="0 0 24 24"><use href="#ic-shopee-logo"/></svg><span>Shopee</span></a>
+            <a class="buy-btn buy-ml buy-pill" href="#" target="_blank" rel="noopener" aria-label="Comprar no Mercado Livre"><svg viewBox="0 0 24 24"><use href="#ic-ml-logo"/></svg><span>ML</span></a>
             <a class="buy-btn buy-tiktok" href="#" target="_blank" rel="noopener" aria-label="Comprar no TikTok Shop"><svg viewBox="0 0 24 24"><use href="#ic-tiktok-shop"/></svg></a>
           </div>
         </div>
